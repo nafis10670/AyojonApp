@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/foreveryedited"
+    android:orientation="vertical"
+    android:weightSum="11"
+    tools:context=".NameHistory">
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        />
+
+    <EditText
+        android:id="@+id/eventname"
+        android:layout_marginLeft="40dp"
+        android:layout_width="300dp"
+        android:paddingLeft="15dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/bc"
+        android:ems="10"
+        android:fontFamily="@font/advent_pro_medium"
+        android:hint="Event Name"
+        android:inputType="textPersonName"
+
+        android:textColorHint="@color/shady"
+        android:textSize="20dp"
+
+        />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        />
+    <EditText
+        android:id="@+id/eventDesc"
+        android:layout_marginLeft="40dp"
+        android:layout_width="300dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="190dp"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@drawable/strokewhite"
+        android:ems="10"
+        android:fontFamily="@font/advent_pro_medium"
+        android:hint="Event Description"
+        android:inputType="textPersonName"
+
+        android:textColorHint="@color/shadyblack"
+        android:textSize="20dp"
+
+        />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        />
+
+    <Button
+        android:id="@+id/buttonforhistory"
+        android:layout_width="295dp"
+        android:layout_height="0dp"
+
+        android:layout_marginLeft="40dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/strc"
+        android:elevation="2dp"
+        android:fontFamily="@font/advent_pro_medium"
+        android:text="Create "
+        android:textColor="@color/white"
+        android:textSize="23sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.1"
+        />
+
+</LinearLayout>
