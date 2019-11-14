@@ -20,35 +20,35 @@ import com.squareup.picasso.Picasso;
 public class Ayoojon_Photo extends AppCompatActivity {
 
 
-    private DatabaseReference productref ;
-    private RecyclerView recyclerView ;
-    RecyclerView.LayoutManager layoutmanager ;
+    private DatabaseReference productref_photo;
+    private RecyclerView recyclerView_photo;
+    RecyclerView.LayoutManager layoutmanager_photo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayoojon__photo);
 
-        productref = FirebaseDatabase.getInstance().getReference().child("Photography") ;
-        recyclerView = findViewById(R.id.recycler_menu) ;
-        layoutmanager = new LinearLayoutManager(this) ;
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutmanager);
+        productref_photo = FirebaseDatabase.getInstance().getReference().child("Photography") ;
+        recyclerView_photo = findViewById(R.id.recycler_menu) ;
+        layoutmanager_photo = new LinearLayoutManager(this) ;
+        recyclerView_photo.setHasFixedSize(true);
+        recyclerView_photo.setLayoutManager(layoutmanager_photo);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerOptions<Products>options =
-                new FirebaseRecyclerOptions.Builder<Products>().setQuery(productref,Products.class).build() ;
+        FirebaseRecyclerOptions<Products> options_photo =
+                new FirebaseRecyclerOptions.Builder<Products>().setQuery(productref_photo,Products.class).build() ;
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_photo = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_photo) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_photo, int position, @NonNull Products model) {
 
-                holder.txtname.setText(model.getTitle());
-                holder.txtdesc.setText(model.getDescription());
-                Picasso.get().load(model.getImage()).into(holder.imageView) ;
+                holder_photo.txtname.setText(model.getTitle());
+                holder_photo.txtdesc.setText(model.getDescription());
+                Picasso.get().load(model.getImage()).into(holder_photo.imageView) ;
 
 
             }
@@ -57,13 +57,13 @@ public class Ayoojon_Photo extends AppCompatActivity {
             @Override
             public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout,parent,false) ;
-                ProductViewHolder holder = new ProductViewHolder(view) ;
-                return holder ;
+                View view_photo = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout,parent,false) ;
+                ProductViewHolder holder_photo = new ProductViewHolder(view_photo) ;
+                return holder_photo ;
             }
         } ;
 
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
+        recyclerView_photo.setAdapter(adapter_photo);
+        adapter_photo.startListening();
     }
 }
