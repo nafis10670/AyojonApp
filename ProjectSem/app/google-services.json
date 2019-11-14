@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "23854762588",
+    "firebase_url": "https://ayoojon-ea8ff.firebaseio.com",
+    "project_id": "ayoojon-ea8ff",
+    "storage_bucket": "ayoojon-ea8ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23854762588:android:d054e0baa8a5acd348b499",
+        "android_client_info": {
+          "package_name": "com.example.asus.ayojoon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23854762588-l59q3hreumgtfv6u2kabiqnsc9ol2662.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.ayojoon",
+            "certificate_hash": "cbb49b343dc3d8a3057f32b6969ed50f9b45a6be"
+          }
+        },
+        {
+          "client_id": "23854762588-cqr48phcd0gls0g72onn6qhigouoei7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIh1EqW5Pb6Mn62fm5FH6GRoXfnnXPJgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23854762588-cqr48phcd0gls0g72onn6qhigouoei7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
