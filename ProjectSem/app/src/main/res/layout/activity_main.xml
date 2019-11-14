@@ -71,7 +71,9 @@
         android:text="Already Have an Account?"
         android:textColor="@color/white"
         android:textSize="18sp"
-        tools:ignore="UnknownId" />
+        tools:ignore="UnknownId"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="42dp" />
 
     />
 </RelativeLayout>
