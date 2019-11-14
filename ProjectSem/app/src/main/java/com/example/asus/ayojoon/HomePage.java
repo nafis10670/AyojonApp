@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.GridLayout;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 public class HomePage extends AppCompatActivity {
 
     GridLayout grid;
@@ -26,6 +28,7 @@ public class HomePage extends AppCompatActivity {
     }
 
 
+
     private void setSingleEvent(GridLayout grid) {
         //Loop all child item of Main Grid
         for (int i = 0; i < grid.getChildCount(); i++) {
@@ -36,7 +39,7 @@ public class HomePage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(HomePage.this, Payement.class);
+                    Intent intent = new Intent(HomePage.this, Ayoojon_Photo.class);
                     startActivity(intent);
 
                 }
