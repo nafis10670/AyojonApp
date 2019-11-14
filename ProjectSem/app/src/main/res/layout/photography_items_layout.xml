@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardElevation="15dp"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Product Name"
+           android:textSize="18sp"
+           android:textAlignment="center"
+           android:fontFamily="@font/advent_pro_medium"
+           android:textColor="@color/black"
+           android:id="@+id/text_pho"
+           />
+
+        <ImageView
+            android:id="@+id/im_pho"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/text_pho"
+
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/im_pho"
+            android:text="Product desc"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/advent_pro_medium"
+            android:textColor="@color/black"
+            android:id="@+id/text_desc_pho"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
