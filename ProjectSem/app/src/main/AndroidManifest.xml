@@ -19,13 +19,13 @@
         </activity>
         <activity android:name=".Sign" />
         <activity android:name=".Register" />
-        <activity android:name=".HomePage"
-            />
+        <activity android:name=".HomePage" />
         <activity android:name=".Catering" />
         <activity android:name=".NameHistory" />
         <activity android:name=".CreateOwn" />
         <activity android:name=".Payement" />
-        <activity android:name=".CardPay"></activity>
+        <activity android:name=".CardPay" />
+        <activity android:name=".Ayoojon_Photo"></activity>
     </application>
 
 </manifest>
