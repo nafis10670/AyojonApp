@@ -39,8 +39,30 @@ public class HomePage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(HomePage.this, Ayoojon_Photo.class);
-                    startActivity(intent);
+                    if (finalI==0) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Venue.class);
+                        startActivity(intent);
+                    }
+                    if (finalI==1) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Catering.class);
+                        startActivity(intent);
+                    }
+                    if (finalI==2) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Deco.class);
+                        startActivity(intent);
+                    }
+                    if (finalI==3) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Music.class);
+                        startActivity(intent);
+                    }
+                    if (finalI==4) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Photo.class);
+                        startActivity(intent);
+                    }
+                    if (finalI==5) {
+                        Intent intent = new Intent(HomePage.this, Ayoojon_Car.class);
+                        startActivity(intent);
+                    }
 
                 }
             });

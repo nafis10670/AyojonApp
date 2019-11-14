@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Ayoojon_Music"></activity>
+        <activity android:name=".Ayoojon_Car" />
+        <activity android:name=".Ayoojon_Deco" />
+        <activity android:name=".Ayoojon_Venue" />
+        <activity android:name=".Ayoojon_Catering" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splashscreen">
             <intent-filter>
@@ -27,7 +32,7 @@
         <activity android:name=".CreateOwn" />
         <activity android:name=".Payement" />
         <activity android:name=".CardPay" />
-        <activity android:name=".Ayoojon_Photo"></activity>
+        <activity android:name=".Ayoojon_Photo" />
     </application>
 
 </manifest>
