@@ -18,8 +18,8 @@ import com.squareup.picasso.Picasso;
 
 public class Product_Details extends AppCompatActivity {
 
-    private ImageView productimage;
-    private TextView prodprice, prodname, proddesc, progressbar;
+    private ImageView productimagedet;
+    private TextView prodpricedet, prodnamedet, proddescdet, progressbar;
     private static SeekBar seekbar;
     private String productID = " ";
     private String ChildName ;
@@ -30,10 +30,10 @@ public class Product_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product__details);
         productID = getIntent().getStringExtra("pid");
-        prodprice = (TextView) findViewById(R.id.price);
-        prodname = (TextView) findViewById(R.id.product_name);
-        proddesc = (TextView) findViewById(R.id.product_name_details);
-        productimage = (ImageView) findViewById(R.id.product_image_details);
+        prodpricedet = (TextView) findViewById(R.id.price);
+        prodnamedet = (TextView) findViewById(R.id.product_name);
+        proddescdet = (TextView) findViewById(R.id.product_name_details);
+        productimagedet = (ImageView) findViewById(R.id.product_image_details);
         Toast.makeText(getApplicationContext(), "Dhukse to pera", Toast.LENGTH_LONG).show();
 
         getProductDetailsPhoto(productID);
@@ -43,6 +43,8 @@ public class Product_Details extends AppCompatActivity {
     }
 
     private void getProductDetailsPhoto(final String productID) {
+
+        Toast.makeText(getApplicationContext(), productID, Toast.LENGTH_LONG).show();
 
 
 
@@ -58,6 +60,7 @@ public class Product_Details extends AppCompatActivity {
         else if (productID.startsWith("T"))
         {
             ChildName = "Entree" ;
+            Toast.makeText(getApplicationContext(), "ETAI SCIENCE", Toast.LENGTH_LONG).show();
 
         }
         else if (productID.startsWith("M"))
@@ -68,18 +71,19 @@ public class Product_Details extends AppCompatActivity {
 
 
 
-        DatabaseReference ProductsPhotoRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference somethingref = ProductsPhotoRef.child(ChildName).child(productID);
+        DatabaseReference ProductsPhotoRefdetails = FirebaseDatabase.getInstance().getReference("Catering");
+        DatabaseReference naire = ProductsPhotoRefdetails.child(ChildName) ;
+        DatabaseReference somethingref = naire.child(productID);
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
 
-                    Products products_photo = dataSnapshot.getValue(Products.class);
-                    prodname.setText(products_photo.getTitle());
-                    prodprice.setText("Price: "+products_photo.getPayment()+" TK");
-                    proddesc.setText(products_photo.getDescription());
-                    Picasso.get().load(products_photo.getImage()).into(productimage);
+                    Products products_details = dataSnapshot.getValue(Products.class);
+                    prodnamedet.setText(products_details.getTitle());
+                    prodpricedet.setText("Price: "+products_details.getPayment()+" TK");
+                    proddescdet.setText(products_details.getDescription());
+                    Picasso.get().load(products_details.getImage()).into(productimagedet);
 
                 } else {
                     Toast.makeText(getApplicationContext(), "WRONGWRONGWRONG", Toast.LENGTH_LONG).show();

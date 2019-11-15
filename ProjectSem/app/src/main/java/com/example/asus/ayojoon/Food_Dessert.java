@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,11 +45,21 @@ public class Food_Dessert extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_starter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_starter) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_starter, int position, @NonNull Products model_starter) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_dessert, int position, @NonNull final Products model_dessert) {
 
-                holder_starter.txtname.setText(model_starter.getTitle());
-                holder_starter.txtdesc.setText(model_starter.getDescription());
-                Picasso.get().load(model_starter.getImage()).into(holder_starter.imageView) ;
+                holder_dessert.txtname.setText(model_dessert.getTitle());
+                holder_dessert.txtdesc.setText(model_dessert.getDescription());
+                Picasso.get().load(model_dessert.getImage()).into(holder_dessert.imageView) ;
+
+
+                holder_dessert.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Food_Dessert.this, Product_Details.class);
+                        intent.putExtra("pid",model_dessert.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
 
 
             }
