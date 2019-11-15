@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +43,20 @@ public class Ayoojon_Deco extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_car = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_deco) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_deco, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_deco, int position, @NonNull final Products model) {
 
                 holder_deco.txtname.setText(model.getTitle());
                 holder_deco.txtdesc.setText(model.getDescription());
                 Picasso.get().load(model.getImage()).into(holder_deco.imageView);
+
+                holder_deco.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Ayoojon_Deco.this, Product_Details_Out.class);
+                        intent.putExtra("pid",model.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
 
 
             }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,11 +45,20 @@ public class Ayoojon_Photo extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_photo = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_photo) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_photo, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_photo, int position, @NonNull final Products model) {
 
                 holder_photo.txtname.setText(model.getTitle());
                 holder_photo.txtdesc.setText(model.getDescription());
                 Picasso.get().load(model.getImage()).into(holder_photo.imageView) ;
+
+                holder_photo.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Ayoojon_Photo.this, Product_Details_Out.class);
+                        intent.putExtra("pid",model.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
 
 
             }

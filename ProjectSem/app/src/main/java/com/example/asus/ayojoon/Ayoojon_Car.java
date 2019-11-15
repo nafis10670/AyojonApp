@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +43,23 @@ public class Ayoojon_Car extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_car = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_car) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_car, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_car, int position, @NonNull final Products model) {
 
                 holder_car.txtname.setText(model.getTitle());
                 holder_car.txtdesc.setText(model.getDescription());
                 Picasso.get().load(model.getImage()).into(holder_car.imageView);
+
+
+                holder_car.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Ayoojon_Car.this, Product_Details_Out.class);
+                        intent.putExtra("pid",model.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
+
+
 
 
             }
@@ -58,6 +71,9 @@ public class Ayoojon_Car extends AppCompatActivity {
                 View view_car = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout, parent, false);
                 ProductViewHolder holder_car = new ProductViewHolder(view_car);
                 return holder_car;
+
+
+
             }
         };
 

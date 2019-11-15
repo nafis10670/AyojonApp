@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class Ayoojon_Music extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayoojon__music);
 
-        productref_music = FirebaseDatabase.getInstance().getReference().child("Sound") ;
+        productref_music = FirebaseDatabase.getInstance().getReference().child("Entertainment") ;
         recyclerView_music = findViewById(R.id.recycler_menu_music) ;
         layoutmanager_music = new LinearLayoutManager(this) ;
         recyclerView_music.setHasFixedSize(true);
@@ -44,11 +45,20 @@ public class Ayoojon_Music extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_music = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_music) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_music, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_music, int position, @NonNull final Products model) {
 
                 holder_music.txtname.setText(model.getTitle());
                 holder_music.txtdesc.setText(model.getDescription());
                 Picasso.get().load(model.getImage()).into(holder_music.imageView) ;
+                holder_music.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Ayoojon_Music.this, Product_Details_Out.class);
+                        intent.putExtra("pid",model.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
+
 
 
             }
