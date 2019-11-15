@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Ayoojon_Music"></activity>
+        <activity android:name=".Food_Drink"></activity>
+        <activity android:name=".Food_Dessert" />
+        <activity android:name=".Food_Entree" />
+        <activity android:name=".Food_Starter" />
+        <activity android:name=".Ayoojon_Music" />
         <activity android:name=".Ayoojon_Car" />
         <activity android:name=".Ayoojon_Deco" />
         <activity android:name=".Ayoojon_Venue" />

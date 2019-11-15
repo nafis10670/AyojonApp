@@ -69,8 +69,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="110dp"
-                    android:layout_height="61dp"
+                    android:layout_width="114dp"
+                    android:layout_height="79dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/venue" />
 
@@ -108,8 +108,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="79dp"
-                    android:layout_height="61dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="79dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/catering" />
 
@@ -148,8 +148,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="97dp"
-                    android:layout_height="62dp"
+                    android:layout_width="114dp"
+                    android:layout_height="79dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/decoration" />
 
@@ -188,15 +188,15 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="79dp"
-                    android:layout_height="61dp"
+                    android:layout_width="98dp"
+                    android:layout_height="79dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/deco" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Music"
+                    android:text="Sound"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -229,8 +229,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="129dp"
-                    android:layout_height="61dp"
+                    android:layout_width="128dp"
+                    android:layout_height="79dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/photo" />
 
@@ -269,7 +269,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="61dp"
+                    android:layout_height="77dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/rentcar" />
 
