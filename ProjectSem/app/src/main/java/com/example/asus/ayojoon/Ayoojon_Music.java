@@ -28,7 +28,7 @@ public class Ayoojon_Music extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayoojon__music);
 
-        productref_music = FirebaseDatabase.getInstance().getReference().child("Sound") ;
+        productref_music = FirebaseDatabase.getInstance().getReference().child("Entertainment") ;
         recyclerView_music = findViewById(R.id.recycler_menu_music) ;
         layoutmanager_music = new LinearLayoutManager(this) ;
         recyclerView_music.setHasFixedSize(true);
