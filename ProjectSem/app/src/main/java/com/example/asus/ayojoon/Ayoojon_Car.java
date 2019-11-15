@@ -58,10 +58,6 @@ public class Ayoojon_Car extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
-
-
-
             }
 
             @NonNull

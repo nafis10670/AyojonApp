@@ -33,7 +33,7 @@ public class Product_Details_Out extends AppCompatActivity {
         prodname = (TextView) findViewById(R.id.product_name_out);
         proddesc = (TextView) findViewById(R.id.product_name_details_out);
         productimage = (ImageView) findViewById(R.id.product_image_details_out);
-        Toast.makeText(getApplicationContext(), "Dhukse to pera", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Ho dekhlam dhukhse", Toast.LENGTH_LONG).show();
 
         getProductDetailsPhoto_out(productID);
 
@@ -74,7 +74,7 @@ public class Product_Details_Out extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(getApplicationContext(), "Dhukse mama ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Shabbash fam", Toast.LENGTH_LONG).show();
 
                     Products products_photo = dataSnapshot.getValue(Products.class);
                     prodname.setText(products_photo.getTitle());

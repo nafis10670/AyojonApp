@@ -20,7 +20,6 @@
         <activity android:name=".Ayoojon_Music" />
         <activity android:name=".Ayoojon_Car" />
         <activity android:name=".Ayoojon_Deco" />
-        <activity android:name=".Ayoojon_Venue" />
         <activity android:name=".Ayoojon_Catering" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splashscreen">
@@ -39,6 +38,7 @@
         <activity android:name=".Payement" />
         <activity android:name=".CardPay" />
         <activity android:name=".Ayoojon_Photo" />
+        <activity android:name=".Ayoojon_Venue" />
     </application>
 
 </manifest>
