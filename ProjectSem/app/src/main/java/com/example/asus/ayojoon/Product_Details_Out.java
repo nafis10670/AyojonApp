@@ -22,13 +22,15 @@ public class Product_Details_Out extends AppCompatActivity {
 
     Button buttonforaddout ;
     private ImageView productimage;
-    private TextView prodprice, prodname, proddesc, progressbar;
+    private TextView prodprice, prodname, proddesc, progressbar,statusTextview;
     private String productID = " ";
     private String ChildName ;
     private int insquantity ;
     private String insname ,insprice ;
     private String version ;
     private long maxid = 0 ;
+    private String stat = "available" ;
+
 
 
     @Override
@@ -37,10 +39,10 @@ public class Product_Details_Out extends AppCompatActivity {
         setContentView(R.layout.activity_product__details__out);
         productID = getIntent().getStringExtra("pid");
         prodprice = (TextView) findViewById(R.id.price_out);
+        statusTextview = (TextView) findViewById(R.id.statusview);
         prodname = (TextView) findViewById(R.id.product_name_out);
         proddesc = (TextView) findViewById(R.id.product_name_details_out);
         productimage = (ImageView) findViewById(R.id.product_image_details_out);
-        Toast.makeText(getApplicationContext(), "Ho dekhlam dhukhse", Toast.LENGTH_LONG).show();
         buttonforaddout = (Button) findViewById(R.id.buttonforaddingtocart_out) ;
         getProductDetailsPhoto_out(productID);
 
@@ -64,12 +66,7 @@ public class Product_Details_Out extends AppCompatActivity {
 
                 anotherref.child(productID).setValue(insertproducts) ;
 
-
-
-                Toast.makeText(getApplicationContext(), "Data Inserted"+insquantity, Toast.LENGTH_LONG).show();
-
-
-
+                Toast.makeText(getApplicationContext(), "Added To List", Toast.LENGTH_LONG).show();
 
 
             }
@@ -117,15 +114,40 @@ public class Product_Details_Out extends AppCompatActivity {
 
 
 
-
+                 //Toast.makeText(getApplicationContext(), "Dhuke nai", Toast.LENGTH_LONG).show();
                     Products products_photo = dataSnapshot.getValue(Products.class);
+
+
+                  if (productID.startsWith("V"))
+                    {
+                        stat = products_photo.getStatus() ;
+                        if(stat.startsWith("a"))
+                        {
+                            buttonforaddout.setEnabled(true);
+                        }
+                        else
+                        {
+                            buttonforaddout.setEnabled(false);
+                        }
+
+                    }
+                  else
+                  {
+                      buttonforaddout.setEnabled(true);
+                  }
+
+
                     insquantity = 1 ;
                     insname = products_photo.getTitle() ;
                     insprice = products_photo.getPayment() ;
                     prodname.setText(products_photo.getTitle());
                     prodprice.setText("Price: "+products_photo.getPayment()+" TK");
+                    statusTextview.setText("Status: "+stat);
+
                     proddesc.setText(products_photo.getDescription());
                     Picasso.get().load(products_photo.getImage()).into(productimage);
+
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Dhuke nai", Toast.LENGTH_LONG).show();

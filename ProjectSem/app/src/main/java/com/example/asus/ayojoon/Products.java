@@ -4,7 +4,7 @@ import com.example.asus.ayojoon.ViewHolder.ProductViewHolder;
 
 public class Products {
 
-    private String title, description, image,payment,pid;
+    private String title, description, image,payment,pid,status;
     int quantity ;
 
 
@@ -13,37 +13,14 @@ public class Products {
 
     }
 
-    public Products(String title, String description, String image, String payment, String pid, int quantity) {
+    public Products(String title, String description, String image, String payment, String pid, int quantity, String status) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.payment = payment;
         this.pid = pid;
         this.quantity = quantity;
-    }
-
-    public String getPayment() {
-        return payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
+        this.status = status;
     }
 
     public String getTitle() {
@@ -68,5 +45,37 @@ public class Products {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

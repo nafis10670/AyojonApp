@@ -51,6 +51,25 @@ public class Shopping_Cart extends AppCompatActivity {
 
         NextProcessBtn = (Button) findViewById(R.id.next_process_button);
         txtTotal = (TextView) findViewById(R.id.total_price);
+
+        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Shopping_Cart.this, DateTimePicker.class);
+                intent.putExtra("Total Price",String.valueOf(totalprice)) ;
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
     }
     @Override
     protected void onStart() {
@@ -136,6 +155,18 @@ public class Shopping_Cart extends AppCompatActivity {
                                                     txtTotal.setText("Total Price: "+String.valueOf(totalprice));
 
                                                     Toast.makeText(getApplicationContext(), "Removed successfully", Toast.LENGTH_LONG).show();
+
+                                                    if(totalprice==0)
+                                                    {
+                                                        NextProcessBtn.setClickable(false);
+                                                        Toast.makeText(getApplicationContext(), "List Is Empty", Toast.LENGTH_LONG).show();
+                                                    }
+                                                    else
+                                                    {
+                                                        NextProcessBtn.setClickable(true);
+
+                                                    }
+
 
                                                 }
 

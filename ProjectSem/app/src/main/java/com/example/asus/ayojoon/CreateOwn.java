@@ -36,7 +36,7 @@ public class CreateOwn extends AppCompatActivity {
 
     public  void openActivityHistory ()
     {
-        Intent intent = new Intent(this,NameHistory.class) ;
+        Intent intent = new Intent(this,HomePage.class) ;
         startActivity(intent);
     }
 

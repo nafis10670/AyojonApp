@@ -68,7 +68,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="86dp"
-
         android:layout_marginLeft="86dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/juststroke"
@@ -79,5 +78,19 @@
         android:textColor="@color/white"
         android:textColorHint="@color/shady"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/statusview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:layout_below="@+id/price_out"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:paddingLeft="10dp"
+
+
+        />
 
 </RelativeLayout>

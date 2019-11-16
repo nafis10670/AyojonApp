@@ -2,13 +2,15 @@ package com.example.asus.ayojoon;
 
 import android.app.Dialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class CardPay extends AppCompatActivity {
-
+   public static String version = "P1";
     Button canc , confi ;
     Button makepayment ;
     Dialog mydialog ;
@@ -30,6 +32,9 @@ public class CardPay extends AppCompatActivity {
 
     public void showmydialog ()
     {
+
+
+
         mydialog= new Dialog(CardPay.this) ;
         mydialog.setContentView(R.layout.showalertbox);
         mydialog.setTitle("Confirm");
@@ -39,13 +44,27 @@ public class CardPay extends AppCompatActivity {
         confi.setEnabled(true);
         mydialog.setCanceledOnTouchOutside(false);
         mydialog.setCancelable(false) ;
+
+
         confi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String newVersion = "P" + (Integer.parseInt(version.substring(1,version.length()))+1);//Stringincrement
+                version=newVersion ;
+                Toast.makeText(getApplicationContext(),version,Toast.LENGTH_LONG).show();
+
+
+                JustCheck justcheck = new JustCheck() ;
+                justcheck.setOki(version);
+
                 Toast.makeText(getApplicationContext(),"Payment Complete",Toast.LENGTH_LONG).show();
 
                 mydialog.cancel();
+
+
+
+
             }
         });
         canc.setOnClickListener(new View.OnClickListener() {
@@ -62,4 +81,14 @@ public class CardPay extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(CardPay.this, HomePage.class);
+
+        startActivity(intent);
+
+
+    }
 }

@@ -36,7 +36,7 @@ public class Product_Details extends AppCompatActivity {
     private String verse = "PA" ;
     private int versionnumber=0 ;
 
-   private String version = "P0";
+
    private AlphaAnimation buttonclick = new AlphaAnimation(1F,0.8F) ;
 
 
@@ -51,7 +51,6 @@ public class Product_Details extends AppCompatActivity {
         productimagedet = (ImageView) findViewById(R.id.product_image_details);
         buttonforadd = (Button) findViewById(R.id.buttonforaddingtocart);
 
-        Toast.makeText(getApplicationContext(), "Dhukse to pera", Toast.LENGTH_LONG).show();
 
         getProductDetailsPhoto(productID);
         seebbbar();
@@ -73,12 +72,13 @@ public class Product_Details extends AppCompatActivity {
 
                 anotherref.child(productID).setValue(insertproducts) ;
 
+                Toast.makeText(getApplicationContext(), "Added To List", Toast.LENGTH_LONG).show();
 
-                String newVersion = "P" + (Integer.parseInt(version.substring(1,version.length()))+1);//Stringincrement
+             JustCheck just = new JustCheck() ;
 
-                version=newVersion ;
+                Toast.makeText(getApplicationContext(), just.getOki(), Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getApplicationContext(), newVersion+"BHAI RE BHAI", Toast.LENGTH_LONG).show();
+
 
 
 
