@@ -5,6 +5,7 @@ import com.example.asus.ayojoon.ViewHolder.ProductViewHolder;
 public class Products {
 
     private String title, description, image,payment,pid;
+    int quantity ;
 
 
     public Products ()
@@ -12,12 +13,13 @@ public class Products {
 
     }
 
-    public Products(String title, String description, String image, String payment, String pid) {
+    public Products(String title, String description, String image, String payment, String pid, int quantity) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.payment = payment;
         this.pid = pid;
+        this.quantity = quantity;
     }
 
     public String getPayment() {
@@ -26,6 +28,14 @@ public class Products {
 
     public void setPayment(String payment) {
         this.payment = payment;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getPid() {

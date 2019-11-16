@@ -60,24 +60,24 @@
 
     <Button
         android:id="@+id/buttonforaddingtocart_out"
-        android:layout_width="314dp"
+        android:layout_width="200dp"
 
         android:layout_height="40dp"
 
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginStart="86dp"
+
+        android:layout_marginLeft="86dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/juststroke"
-        android:elevation="15dp"
         android:fontFamily="@font/advent_pro_medium"
-        android:gravity="center"
+
         android:text="ADD"
+
         android:textColor="@color/white"
         android:textColorHint="@color/shady"
         android:textSize="20sp" />
-
 
 </RelativeLayout>

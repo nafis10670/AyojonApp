@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -18,10 +20,14 @@ import com.squareup.picasso.Picasso;
 
 public class Product_Details_Out extends AppCompatActivity {
 
+    Button buttonforaddout ;
     private ImageView productimage;
     private TextView prodprice, prodname, proddesc, progressbar;
     private String productID = " ";
     private String ChildName ;
+    private int insquantity ;
+    private String insname ,insprice ;
+
 
 
     @Override
@@ -34,8 +40,37 @@ public class Product_Details_Out extends AppCompatActivity {
         proddesc = (TextView) findViewById(R.id.product_name_details_out);
         productimage = (ImageView) findViewById(R.id.product_image_details_out);
         Toast.makeText(getApplicationContext(), "Ho dekhlam dhukhse", Toast.LENGTH_LONG).show();
-
+        buttonforaddout = (Button) findViewById(R.id.buttonforaddingtocart_out) ;
         getProductDetailsPhoto_out(productID);
+
+        final Products   insertproducts = new Products() ;
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartList") ;
+
+
+
+        buttonforaddout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                insertproducts.setPid(productID);
+                insertproducts.setPayment(insprice);
+                insertproducts.setQuantity(insquantity);
+                insertproducts.setTitle(insname);
+
+                cartListRef.child(productID).setValue(insertproducts) ;
+
+
+
+                Toast.makeText(getApplicationContext(), "Data Inserted"+insquantity, Toast.LENGTH_LONG).show();
+
+
+
+
+
+            }
+        });
+
+
 
 
     }
@@ -74,9 +109,14 @@ public class Product_Details_Out extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(getApplicationContext(), "Shabbash fam", Toast.LENGTH_LONG).show();
+
+
+
 
                     Products products_photo = dataSnapshot.getValue(Products.class);
+                    insquantity = 1 ;
+                    insname = products_photo.getTitle() ;
+                    insprice = products_photo.getPayment() ;
                     prodname.setText(products_photo.getTitle());
                     prodprice.setText("Price: "+products_photo.getPayment()+" TK");
                     proddesc.setText(products_photo.getDescription());
@@ -86,6 +126,10 @@ public class Product_Details_Out extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Dhuke nai", Toast.LENGTH_LONG).show();
 
                 }
+
+
+
+
             }
 
 
