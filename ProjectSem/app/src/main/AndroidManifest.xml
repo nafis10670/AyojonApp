@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Product_Details_Out"></activity>
+        <activity android:name=".Shopping_Cart"></activity>
+        <activity android:name=".Product_Details_Out" />
         <activity android:name=".Product_Details" />
         <activity android:name=".Food_Drink" />
         <activity android:name=".Food_Dessert" />
