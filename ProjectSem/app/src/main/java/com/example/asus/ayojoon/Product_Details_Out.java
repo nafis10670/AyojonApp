@@ -27,7 +27,8 @@ public class Product_Details_Out extends AppCompatActivity {
     private String ChildName ;
     private int insquantity ;
     private String insname ,insprice ;
-
+    private String version ;
+    private long maxid = 0 ;
 
 
     @Override
@@ -45,6 +46,10 @@ public class Product_Details_Out extends AppCompatActivity {
 
         final Products   insertproducts = new Products() ;
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartList") ;
+        final DatabaseReference anotherref = cartListRef.child("P1") ;
+
+
+
 
 
 
@@ -57,7 +62,7 @@ public class Product_Details_Out extends AppCompatActivity {
                 insertproducts.setQuantity(insquantity);
                 insertproducts.setTitle(insname);
 
-                cartListRef.child(productID).setValue(insertproducts) ;
+                anotherref.child(productID).setValue(insertproducts) ;
 
 
 

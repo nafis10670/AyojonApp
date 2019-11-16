@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -32,6 +33,11 @@ public class Product_Details extends AppCompatActivity {
     static int progress_value ;
     private int insquantity ;
     private String insname ,insprice ;
+    private String verse = "PA" ;
+    private int versionnumber=0 ;
+
+   private String version = "P0";
+   private AlphaAnimation buttonclick = new AlphaAnimation(1F,0.8F) ;
 
 
     @Override
@@ -53,23 +59,26 @@ public class Product_Details extends AppCompatActivity {
 
       final Products   insertproducts = new Products() ;
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartList") ;
-
+        final DatabaseReference anotherref = cartListRef.child("P1") ;
 
 
         buttonforadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                v.startAnimation(buttonclick);
                 insertproducts.setTitle(insname);
                 insertproducts.setPid(productID);
                 insertproducts.setPayment(insprice);
                 insertproducts.setQuantity(insquantity);
 
-                cartListRef.child(productID).setValue(insertproducts) ;
+                anotherref.child(productID).setValue(insertproducts) ;
 
 
+                String newVersion = "P" + (Integer.parseInt(version.substring(1,version.length()))+1);//Stringincrement
 
-                Toast.makeText(getApplicationContext(), "Data Inserted"+insquantity, Toast.LENGTH_LONG).show();
+                version=newVersion ;
+
+                Toast.makeText(getApplicationContext(), newVersion+"BHAI RE BHAI", Toast.LENGTH_LONG).show();
 
 
 

@@ -10,16 +10,29 @@ import android.view.View;
 import android.widget.GridLayout;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomePage extends AppCompatActivity {
 
     GridLayout grid;
+    FloatingActionButton georgiewilfloat ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         grid = (GridLayout) findViewById(R.id.maingrid);
+        georgiewilfloat = (FloatingActionButton) findViewById(R.id.floating) ;
+
+        georgiewilfloat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, Shopping_Cart.class);
+
+                startActivity(intent);
+            }
+        });
 
 
 

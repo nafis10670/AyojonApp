@@ -73,7 +73,7 @@
         android:layout_marginBottom="36dp"
         android:background="@drawable/juststroke"
         android:fontFamily="@font/advent_pro_medium"
-
+            android:elevation="15dp"
         android:text="ADD"
 
         android:textColor="@color/white"
