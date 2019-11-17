@@ -35,7 +35,7 @@ public class Product_Details extends AppCompatActivity {
     private String insname ,insprice ;
     private String verse = "PA" ;
     private int versionnumber=0 ;
-
+    String check ;
 
    private AlphaAnimation buttonclick = new AlphaAnimation(1F,0.8F) ;
 
@@ -51,6 +51,8 @@ public class Product_Details extends AppCompatActivity {
         productimagedet = (ImageView) findViewById(R.id.product_image_details);
         buttonforadd = (Button) findViewById(R.id.buttonforaddingtocart);
 
+        CreateOwn create = new CreateOwn () ;
+        check = create.version ;
 
         getProductDetailsPhoto(productID);
         seebbbar();
@@ -58,7 +60,7 @@ public class Product_Details extends AppCompatActivity {
 
       final Products   insertproducts = new Products() ;
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartList") ;
-        final DatabaseReference anotherref = cartListRef.child("P1") ;
+        final DatabaseReference anotherref = cartListRef.child(check) ;
 
 
         buttonforadd.setOnClickListener(new View.OnClickListener() {

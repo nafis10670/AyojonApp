@@ -50,17 +50,12 @@ public class CardPay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String newVersion = "P" + (Integer.parseInt(version.substring(1,version.length()))+1);//Stringincrement
-                version=newVersion ;
-                Toast.makeText(getApplicationContext(),version,Toast.LENGTH_LONG).show();
 
 
-                JustCheck justcheck = new JustCheck() ;
-                justcheck.setOki(version);
 
-                Toast.makeText(getApplicationContext(),"Payment Complete",Toast.LENGTH_LONG).show();
 
                 mydialog.cancel();
+                Toast.makeText(getApplicationContext(), "Payment Completed", Toast.LENGTH_LONG).show();
 
 
 
@@ -85,7 +80,7 @@ public class CardPay extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(CardPay.this, HomePage.class);
+        Intent intent = new Intent(CardPay.this, CreateOwn.class);
 
         startActivity(intent);
 

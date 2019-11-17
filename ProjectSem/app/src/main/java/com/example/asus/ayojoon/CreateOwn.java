@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class CreateOwn extends AppCompatActivity {
 
     Button buttonforcreate ;
+    public static String version = "P0" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,6 +39,11 @@ public class CreateOwn extends AppCompatActivity {
 
     public  void openActivityHistory ()
     {
+
+        String newVersion = "P" + (Integer.parseInt(version.substring(1,version.length()))+1);//Stringincrement
+        version=newVersion ;
+        Toast.makeText(getApplicationContext(),version,Toast.LENGTH_LONG).show();
+
         Intent intent = new Intent(this,HomePage.class) ;
         startActivity(intent);
     }

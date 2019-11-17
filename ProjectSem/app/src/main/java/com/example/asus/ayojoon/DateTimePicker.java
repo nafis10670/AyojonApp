@@ -32,7 +32,7 @@ public class DateTimePicker extends AppCompatActivity {
     TextView dateTextView, timeTextView,priceview;
     EditText mynameis ;
     private String totalmount ="",EventName ,timemine,Datemine;
-
+        String check ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +47,13 @@ public class DateTimePicker extends AppCompatActivity {
         timeTextView=findViewById(R.id.timeview) ;
        priceview=findViewById(R.id.totmount) ;
         mynameis = findViewById(R.id.eventname) ;
-
+        CreateOwn create = new CreateOwn () ;
+        check = create.version ;
 
 
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("History") ;
-        final DatabaseReference anotherref = cartListRef.child("P1") ;
+        final DatabaseReference anotherref = cartListRef.child(check) ;
 
 
 
@@ -97,6 +98,14 @@ public class DateTimePicker extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DateTimePicker.this, HomePage.class);
+        startActivity(intent);
+
+
+    }
 
     private void handleDateButton() {
         Calendar calendar = Calendar.getInstance();

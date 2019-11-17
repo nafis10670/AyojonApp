@@ -18,7 +18,7 @@ public class HomePage extends AppCompatActivity {
     private Toast backToast;
     GridLayout grid;
     FloatingActionButton georgiewilfloat ;
-
+    public String check ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,8 @@ public class HomePage extends AppCompatActivity {
 
         grid = (GridLayout) findViewById(R.id.maingrid);
         georgiewilfloat = (FloatingActionButton) findViewById(R.id.floating) ;
+
+
 
         georgiewilfloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,9 @@ public class HomePage extends AppCompatActivity {
                 public void onClick(View view) {
 
                     if (finalI==0) {
+
+
+
                         Intent intent = new Intent(HomePage.this,Catering.class);
                         startActivity(intent);
                     }

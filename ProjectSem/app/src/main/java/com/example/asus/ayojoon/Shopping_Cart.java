@@ -35,8 +35,8 @@ public class Shopping_Cart extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProcessBtn;
     private TextView txtTotal;
-    private int totalprice =0;
-
+    private int totalprice=0 ;
+    String check ;
 
 
     @Override
@@ -49,9 +49,12 @@ public class Shopping_Cart extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+
         NextProcessBtn = (Button) findViewById(R.id.next_process_button);
         txtTotal = (TextView) findViewById(R.id.total_price);
 
+        CreateOwn create = new CreateOwn () ;
+        check = create.version ;
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,7 @@ public class Shopping_Cart extends AppCompatActivity {
         final DatabaseReference Cart_showitem = FirebaseDatabase.getInstance().getReference("CartList");
 
         FirebaseRecyclerOptions<Cart> options_cart =
-                new FirebaseRecyclerOptions.Builder<Cart>().setQuery(Cart_showitem.child("P1"),Cart.class).build() ;
+                new FirebaseRecyclerOptions.Builder<Cart>().setQuery(Cart_showitem.child(check),Cart.class).build() ;
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options_cart) {
             @Override
@@ -143,7 +146,7 @@ public class Shopping_Cart extends AppCompatActivity {
 
                             if(i==0)
                             {
-                                Cart_showitem.child("P1").child(model.getPid()).removeValue()
+                                Cart_showitem.child(check).child(model.getPid()).removeValue()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

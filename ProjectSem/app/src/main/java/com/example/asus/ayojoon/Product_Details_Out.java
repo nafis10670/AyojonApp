@@ -30,7 +30,7 @@ public class Product_Details_Out extends AppCompatActivity {
     private String version ;
     private long maxid = 0 ;
     private String stat = "available" ;
-
+String check ;
 
 
     @Override
@@ -46,9 +46,13 @@ public class Product_Details_Out extends AppCompatActivity {
         buttonforaddout = (Button) findViewById(R.id.buttonforaddingtocart_out) ;
         getProductDetailsPhoto_out(productID);
 
+
+        CreateOwn create = new CreateOwn () ;
+        check = create.version ;
+
         final Products   insertproducts = new Products() ;
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("CartList") ;
-        final DatabaseReference anotherref = cartListRef.child("P1") ;
+        final DatabaseReference anotherref = cartListRef.child(check) ;
 
 
 
