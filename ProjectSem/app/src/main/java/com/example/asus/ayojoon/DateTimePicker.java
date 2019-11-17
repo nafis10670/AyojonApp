@@ -65,6 +65,9 @@ public class DateTimePicker extends AppCompatActivity {
             public void onClick(View view) {
                 handleDateButton();
                 handleTimeButton();
+
+                makeButton.setEnabled(true);
+
             }
         });
 
