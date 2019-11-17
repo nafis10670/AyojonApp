@@ -76,7 +76,6 @@ public class Product_Details extends AppCompatActivity {
 
              JustCheck just = new JustCheck() ;
 
-                Toast.makeText(getApplicationContext(), just.getOki(), Toast.LENGTH_LONG).show();
 
 
 
@@ -93,7 +92,6 @@ public class Product_Details extends AppCompatActivity {
 
   public void getProductDetailsPhoto(final String productID) {
 
-        Toast.makeText(getApplicationContext(), productID, Toast.LENGTH_LONG).show();
 
 
 
