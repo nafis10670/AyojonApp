@@ -2,6 +2,7 @@ package com.example.asus.ayojoon;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,43 +15,70 @@ import android.view.ViewGroup;
 import com.example.asus.ayojoon.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class Ayoojon_Music extends AppCompatActivity {
 
+    private DatabaseReference productref_car;
+    private RecyclerView recyclerView_car;
+    private SearchView searchView;
+    RecyclerView.LayoutManager layoutmanager_car;
+    ArrayList<Products> list;
+    FirebaseRecyclerOptions<Products> options_car;
+    FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_car;
 
-    private DatabaseReference productref_music;
-    private RecyclerView recyclerView_music;
-    RecyclerView.LayoutManager layoutmanager_music;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayoojon__music);
 
-        productref_music = FirebaseDatabase.getInstance().getReference().child("Entertainment") ;
-        recyclerView_music = findViewById(R.id.recycler_menu_music) ;
-        layoutmanager_music = new LinearLayoutManager(this) ;
-        recyclerView_music.setHasFixedSize(true);
-        recyclerView_music.setLayoutManager(layoutmanager_music);
+        productref_car = FirebaseDatabase.getInstance().getReference().child("Entertainment") ;
+        recyclerView_car = findViewById(R.id.recycler_menu_music) ;
+        layoutmanager_car = new LinearLayoutManager(this) ;
+        recyclerView_car.setHasFixedSize(true);
+        recyclerView_car.setLayoutManager(layoutmanager_car);
+        searchView = findViewById(R.id.search_music);
 
+        productref_car.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    list = new ArrayList<>();
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                        list.add(ds.getValue(Products.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerOptions<Products> options_music =
-                new FirebaseRecyclerOptions.Builder<Products>().setQuery(productref_music,Products.class).build() ;
+        options_car =
+                new FirebaseRecyclerOptions.Builder<Products>().setQuery(productref_car, Products.class).build();
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter_music = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_music) {
+        adapter_car = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_car) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder_music, int position, @NonNull final Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_car, int position, @NonNull final Products model) {
 
-                holder_music.txtname.setText(model.getTitle());
-                holder_music.txtdesc.setText(model.getDescription());
-                Picasso.get().load(model.getImage()).into(holder_music.imageView) ;
-                holder_music.itemView.setOnClickListener(new View.OnClickListener() {
+                holder_car.txtname.setText(model.getTitle());
+                holder_car.txtdesc.setText(model.getDescription());
+                Picasso.get().load(model.getImage()).into(holder_car.imageView);
+
+
+                holder_car.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Ayoojon_Music.this, Product_Details_Out.class);
@@ -58,22 +86,89 @@ public class Ayoojon_Music extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
-
-
             }
 
             @NonNull
             @Override
             public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View view_music = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout,parent,false) ;
-                ProductViewHolder holder_music = new ProductViewHolder(view_music) ;
-                return holder_music ;
-            }
-        } ;
+                View view_car = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout, parent, false);
+                ProductViewHolder holder_car = new ProductViewHolder(view_car);
+                return holder_car;
 
-        recyclerView_music.setAdapter(adapter_music);
-        adapter_music.startListening();
+
+
+            }
+        };
+
+
+        recyclerView_car.setAdapter(adapter_car);
+        adapter_car.startListening();
+
+        if(searchView != null){
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    search(s);
+                    return true;
+                }
+            });
+        }
+    }
+
+    private void search(String str){
+
+
+//        System.out.println("SEARCH STRING **************"+str);
+//        ArrayList<Products> myList = new ArrayList<>();
+//        for(Products object: list ){
+//            for(DataSnapshot ds : dataSnapshot.getChildren()){
+//                list.add(ds.getValue(Products.class));
+//            }
+//        }
+
+
+        options_car =
+                new FirebaseRecyclerOptions.Builder<Products>().setQuery(productref_car.orderByChild("title").startAt(str).endAt(str + "\uf8ff"), Products.class).build();
+        adapter_car = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options_car) {
+            @Override
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder_car, int position, @NonNull final Products model) {
+
+                holder_car.txtname.setText(model.getTitle());
+                holder_car.txtdesc.setText(model.getDescription());
+                Picasso.get().load(model.getImage()).into(holder_car.imageView);
+
+
+                holder_car.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Ayoojon_Music.this, Product_Details_Out.class);
+                        intent.putExtra("pid",model.getPid()) ;
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View view_car = LayoutInflater.from(parent.getContext()).inflate(R.layout.photography_items_layout, parent, false);
+                ProductViewHolder holder_car = new ProductViewHolder(view_car);
+                return holder_car;
+
+
+
+            }
+        };
+
+        recyclerView_car.setAdapter(adapter_car);
+        adapter_car.startListening();
+
     }
 }
