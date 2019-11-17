@@ -8,12 +8,14 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomePage extends AppCompatActivity {
-
+    private long backPressedTime;
+    private Toast backToast;
     GridLayout grid;
     FloatingActionButton georgiewilfloat ;
 
@@ -38,6 +40,25 @@ public class HomePage extends AppCompatActivity {
 
         setSingleEvent(grid);
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+
+            moveTaskToBack(true) ;
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1) ;
+
+
+
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 
 
