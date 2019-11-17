@@ -178,7 +178,6 @@ public class Product_Details extends AppCompatActivity {
                         progressbar.setText("Quantity: "+progress_value+" / "+seekbar.getMax());
 
 
-                        Toast.makeText(getApplicationContext(), "CHeck:"+progress_value, Toast.LENGTH_LONG).show();
 
 
 

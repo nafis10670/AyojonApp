@@ -74,7 +74,7 @@ public class HomePage extends AppCompatActivity {
                 public void onClick(View view) {
 
                     if (finalI==0) {
-                        Intent intent = new Intent(HomePage.this, Ayoojon_Venue.class);
+                        Intent intent = new Intent(HomePage.this,Catering.class);
                         startActivity(intent);
                     }
                     if (finalI==1) {

@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DateTimePicker"
-            android:exported="true"></activity>
+        <activity android:name=".Send_Location"></activity>
+        <activity
+            android:name=".DateTimePicker"
+            android:exported="true" />
         <activity android:name=".Shopping_Cart" />
         <activity android:name=".Product_Details_Out" />
         <activity android:name=".Product_Details" />
